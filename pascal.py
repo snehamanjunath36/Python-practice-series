@@ -1,43 +1,12 @@
-# def printPascal(n):
-#     res=[[]]
-#     for i in range(0,n):
-#         temp=[]
-#         if i==0:
-#             temp.append(1)
-#             res.append(temp)
-#         else:
-#             for j in range(0,len(res[i])):
-#                 sum=0
-#                 if j==0:
-#                     temp.append(res[i][j])
-#                 else:
-#                     temp.append((res[i][j-1]+res[i][j]))
-#             temp.append(1)
-#             res.append(temp)
-#     return(res)
-# print(printPascal(6))
-
-
-def pascal():
-    pas = []
-    for i in range(0,num+1):
-        if i == 0:
-            pas.append([1])
-        else:
-            temp =[]
-            sum = 0
-            for j in range(i):
-                if j == 0:
-                    temp.append(1)
-                elif j == i-1:
-                    temp.append(1)
-                else:
-                    sum = temp[j-1] + temp[j]
-                    temp.append(sum)
-
-                pas.append(temp)
-
-            
-    return pas
-num = int(input("Enter pascal triangle length"))
-print(pascal())
+def pascal(num):
+    ans = [[1]]
+    for i in range(2,num+1):
+        temp = [0] + ans[-1] +[0]
+        res =[]
+        for j in range(len(ans[-1])+1):
+            res.append(temp[j]+temp[j+1])
+        ans.append(res)
+    print(ans)
+    
+num = int(input('enter the triangle length'))
+pascal(num)
